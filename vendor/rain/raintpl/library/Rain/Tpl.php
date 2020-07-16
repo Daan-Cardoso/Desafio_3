@@ -297,10 +297,10 @@ class Tpl {
         }
 
         // if the template doesn't exsist throw an error
-        if ($isFileNotExist === true) {
-            $e = new Tpl\NotFoundException('Template ' . $templateName . ' not found!');
-            throw $e->templateFile($templateFilepath);
-        }
+        // if ($isFileNotExist === true) {
+        //     $e = new Tpl\NotFoundException('Template ' . $templateName . ' not found!');
+        //     throw $e->templateFile($templateFilepath);
+        // }
 
         // Compile the template if the original has been updated
         if ($this->config['debug'] || !file_exists($parsedTemplateFilepath) || ( filemtime($parsedTemplateFilepath) < filemtime($templateFilepath) )) {

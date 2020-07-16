@@ -12,11 +12,23 @@ $app->get('/api/usuarios', function (Request $request, Response $response, array
 
     $sql = new Sql();
 
-    $return = $sql->select(""); //Escreva a query entre as aspas
+    $dataName = $sql->select("SELECT * FROM users ORDER BY id ASC");
 
-    
-    echo json_encode([]);
-    
+    $response = json_encode($dataName);
+    return $response;
+
+
+});
+$app->get('/api/telefones', function (Request $request, Response $response, array $args) use ($app) {
+
+  $sql = new Sql();
+
+  $dataPhone = $sql->select("SELECT * FROM phones ORDER BY id_user ASC");
+
+  $response = json_encode($dataPhone);
+  return $response;
+
+
 });
 $app->get('/api/createtable', function (Request $request, Response $response, array $args) use ($app) {
 
@@ -28,15 +40,15 @@ $app->get('/api/createtable', function (Request $request, Response $response, ar
             id INT auto_increment primary key,
             name VARCHAR(255) NOT NULL
         )");
-        
-        
+
+
         $sql->select("create table if not exists phones (
             id INT auto_increment primary key,
             phone VARCHAR(15) NOT NULL,
             id_user INT NOT NULL
             )");
-        
-        
+
+
         $sql->select("INSERT INTO users(name) VALUES('Kauan Pereira Rocha')");
         $sql->select("INSERT INTO users(name) VALUES('Antônio Oliveira Cunha')");
         $sql->select("INSERT INTO users(name) VALUES('Paulo Ferreira Sousa')");
@@ -52,8 +64,8 @@ $app->get('/api/createtable', function (Request $request, Response $response, ar
         $sql->select("INSERT INTO users(name) VALUES('Danilo Araujo Costa')");
         $sql->select("INSERT INTO users(name) VALUES('Leila Fernandes Cunha')");
         $sql->select("INSERT INTO users(name) VALUES('Livia Silva Ribeiro')");
-        
-        
+
+
         $sql->select("INSERT INTO phones(phone,id_user) VALUES('(22) 86093-3954',1)");
         $sql->select("INSERT INTO phones(phone,id_user) VALUES('(45) 49821-3210',2)");
         $sql->select("INSERT INTO phones(phone,id_user) VALUES('(36) 76792-9280',3)");
@@ -81,7 +93,7 @@ $app->get('/api/createtable', function (Request $request, Response $response, ar
     {
         echo "Já existe";
     }
-    
+
 });
 
 

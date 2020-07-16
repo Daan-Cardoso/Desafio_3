@@ -1,9 +1,9 @@
 <?php
 
 
-const ROUTE = "http://192.168.0.180"; //endereço onde esta o site
-const ROUTE_WEBSITE = "http://192.168.0.180/website"; //pasta website do projeto, se nao for diferente, altere o ip
-const ROUTE_API = "http://192.168.0.180"; //mesmo endereço do site para este projeto
+const ROUTE = "http://192.168.1.35"; //endereço onde esta o site
+const ROUTE_WEBSITE = "http://192.168.1.35/website"; //pasta website do projeto, se nao for diferente, altere o ip
+const ROUTE_API = "http://192.168.1.35"; //mesmo endereço do site para este projeto
 const TPL_DIR_BASE = "/"; //pasta template html, colocar da raiz do servidor até a pasta do projeto
 
 
