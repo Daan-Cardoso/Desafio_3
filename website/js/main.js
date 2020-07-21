@@ -1,24 +1,37 @@
 var app = new Vue({
   el: '#app',
-  data: {},
+  computed: {
+    filtredNames: function(){
+      return this.users.filter((users) => {
+        return users.name.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '').match(this.search);
+      });
+    },
+    showUsers: function(){
+      let aux = [];
+
+      this.users.indexOf(this.filtredNames()) > -1 ? console.log(this.filtredNames()) : false
+    }
+  },
   methods: {
-    fetchAllCostumers(arrNames, arrPhones) {
-      console.log(arrNames, arrPhones);
+    padronizeSearch(word){
+      this.search = word.toUpperCase().normalize("NFD").trim().replace(/[\u0300-\u036f]/g, '');
     }
   },
   data() {
     return {
-      costumers: [],
-      phones: [],
-      inputValue: '',
+      users: [],
+      phones:[],
+      searchInput: '',
+      search:null,
+      img: 'https://i.pravatar.cc/150'
     }
   },
-  mounted() {
+  created() {
     axios
       .get('http://192.168.1.35/api/usuarios')
-      .then(response => (this.costumers = response.data)),
-      axios
-      .get('http://192.168.1.35/api/telefones')
+      .then(response => (this.users = response.data))
+    axios
+      .get('http://192.168.1.35/api/usuarios/telefones')
       .then(response => (this.phones = response.data))
   }
 })

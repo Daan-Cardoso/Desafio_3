@@ -34,7 +34,7 @@ html, body{
 #list .list__item {
     background: #2f3036;
     width: 190px;
-    height: 306px;
+    min-height: 306px;
     list-style-type: none;
     margin: 15px;
 }

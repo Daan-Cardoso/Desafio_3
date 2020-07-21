@@ -12,24 +12,23 @@ $app->get('/api/usuarios', function (Request $request, Response $response, array
 
     $sql = new Sql();
 
-    $dataName = $sql->select("SELECT * FROM users ORDER BY id ASC");
+    $dataName = $sql->select("SELECT * FROM `users` ORDER BY `users`.`name` ASC");
 
     $response = json_encode($dataName);
     return $response;
-
-
 });
-$app->get('/api/telefones', function (Request $request, Response $response, array $args) use ($app) {
 
-  $sql = new Sql();
+$app->get('/api/usuarios/telefones', function (Request $request, Response $response, array $args) use ($app) {
 
-  $dataPhone = $sql->select("SELECT * FROM phones ORDER BY id_user ASC");
-
-  $response = json_encode($dataPhone);
-  return $response;
+    $sql = new Sql();
 
 
+    $dataTelefone = $sql->select("SELECT * FROM `phones` ORDER BY `phones`.`id_user` ASC");
+
+    $response = json_encode($dataTelefone);
+    return $response;
 });
+
 $app->get('/api/createtable', function (Request $request, Response $response, array $args) use ($app) {
 
     $sql = new Sql();

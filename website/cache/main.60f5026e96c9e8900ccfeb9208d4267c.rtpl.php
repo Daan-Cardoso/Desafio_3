@@ -14,16 +14,16 @@
 <body>
   <div id="app">
     <div class="sectionInput">
-      <input v-model="inputValue" class="sectionInput__box" type="text" name="" id="input"
+      <input :keyup="padronizeSearch(searchInput)" v-model="searchInput" class="sectionInput__box" type="text" name="" id="input"
         placeholder="Name">
+
     </div>
     <div class="sectionUsers">
       <ul id="list" class="list">
-        <li v-for="costumer of costumers" :key="costumer.id" class="list__item">
-          <img class="list__photo" src="" alt="">
-          <p class="list__paragraph">{{costumer.name}}</p>
-
-          <p class="list__telefone">{{inputValue}}</p>
+        <li v-for="user in users" v-show="user.name !== filtredNames" class="list__item">
+          <img class="list__photo" v-bind:src="img" alt="">
+          <p class="list__paragraph">{{user.name}}</p>
+          <p v-for="telefone in phones" v-if="user.id === telefone.id_user" class="list__telefone">{{telefone.phone}}</p>
         </li>
       </ul>
     </div>

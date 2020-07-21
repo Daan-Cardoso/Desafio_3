@@ -4,15 +4,15 @@ namespace Source\Sql;
 
 class Sql{
     const HOSTNAME = "localhost";
-	const USERNAME = "root";
-	const PASSWORD = "";
+	  const USERNAME = "root";
+	  const PASSWORD = "";
     const DBNAME = "prismacode";
     private $conn;
 
 	public function __construct()
 	{
 		$this->conn = new \PDO(
-			"mysql:dbname=".SQL_DBNAME.";host=".SQL_HOSTNAME, 
+			"mysql:dbname=".SQL_DBNAME.";host=".SQL_HOSTNAME,
 			SQL_USERNAME,
 			SQL_PASSWORD,
 			array(\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
@@ -21,7 +21,7 @@ class Sql{
 	private function setParams($statement, $parameters = array())
 	{
 		foreach ($parameters as $key => $value) {
-			
+
 			$this->bindParam($statement, $key, $value);
 		}
 	}

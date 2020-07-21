@@ -14,16 +14,15 @@
 <body>
   <div id="app">
     <div class="sectionInput">
-      <input v-model="inputValue" class="sectionInput__box" type="text" name="" id="input"
+      <input :keyup="filter(inputValue)" v-model="inputValue" class="sectionInput__box" type="text" name="" id="input"
         placeholder="Name">
     </div>
     <div class="sectionUsers">
       <ul id="list" class="list">
         <li v-for="costumer of costumers" :key="costumer.id" class="list__item">
-          <img class="list__photo" src="" alt="">
+          <img class="list__photo" src="https://via.placeholder.com/150/150" alt="">
           <p class="list__paragraph">{{costumer.name}}</p>
-
-          <p class="list__telefone">{{inputValue}}</p>
+          <p class="list__telefone"></p>
         </li>
       </ul>
     </div>
